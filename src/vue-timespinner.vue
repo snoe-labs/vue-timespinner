@@ -1,5 +1,5 @@
 <script>
-import defineComponent from 'vue';
+import { defineComponent } from 'vue';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 

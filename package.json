@@ -1,7 +1,7 @@
 {
   "name": "vue-timespinner",
   "version": "0.1.0",
-  "description": "",
+  "description": "A simple Vue.js timespinner component",
   "main": "dist/vue-timespinner.ssr.js",
   "browser": "dist/vue-timespinner.esm.js",
   "module": "dist/vue-timespinner.esm.js",
