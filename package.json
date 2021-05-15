@@ -1,6 +1,6 @@
 {
   "name": "vue-timespinner",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/vue-timespinner.ssr.js",
   "browser": "dist/vue-timespinner.esm.js",

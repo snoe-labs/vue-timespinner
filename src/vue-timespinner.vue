@@ -1,65 +1,41 @@
 <script>
-import { defineComponent } from 'vue';
+import defineComponent from 'vue';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
 
 export default /*#__PURE__*/defineComponent({
-  name: 'VueTimespinner', // vue component name
+  name: 'VueTimespinner',
   data() {
     return {
-      counter: 5,
-      initCounter: 5,
-      message: {
-        action: null,
-        amount: null,
+      time: dayjs('18:00', 'HH:mm'),
+      options: {
+          interval: 15
       },
     };
   },
   computed: {
-    changedBy() {
-      const { message } = this;
-      if (!message.action) return 'initialized';
-      return `${message.action} ${message.amount || ''}`.trim();
+    computedTime() {
+      return this.time.format('HH:mm')
     },
   },
   methods: {
-    increment(arg) {
-      const amount = (typeof arg !== 'number') ? 1 : arg;
-      this.counter += amount;
-      this.message.action = 'incremented by';
-      this.message.amount = amount;
+    increment() {
+      this.time = this.time.add(this.options.interval, 'minutes')
     },
-    decrement(arg) {
-      const amount = (typeof arg !== 'number') ? 1 : arg;
-      this.counter -= amount;
-      this.message.action = 'decremented by';
-      this.message.amount = amount;
-    },
-    reset() {
-      this.counter = this.initCounter;
-      this.message.action = 'reset';
-      this.message.amount = null;
-    },
+    decrement() {
+      this.time = this.time.subtract(this.options.interval, 'minutes')
+    }
   },
 });
 </script>
 
 <template>
   <div class="vue-timespinner">
-    <p>The counter was {{ changedBy }} to <b>{{ counter }}</b>.</p>
-    <button @click="increment">
-      Click +1
-    </button>
-    <button @click="decrement">
-      Click -1
-    </button>
-    <button @click="increment(5)">
-      Click +5
-    </button>
-    <button @click="decrement(5)">
-      Click -5
-    </button>
-    <button @click="reset">
-      Reset
-    </button>
+    <button v-on:click="decrement">-</button>
+    <input type="text" v-bind:value="computedTime" />
+    <button v-on:click="increment">+</button>
   </div>
 </template>
 
@@ -68,8 +44,6 @@ export default /*#__PURE__*/defineComponent({
     display: block;
     width: 400px;
     margin: 25px auto;
-    border: 1px solid #ccc;
-    background: #eaeaea;
     text-align: center;
     padding: 25px;
   }
