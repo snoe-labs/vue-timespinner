@@ -7,16 +7,20 @@ dayjs.extend(customParseFormat);
 
 export default /*#__PURE__*/defineComponent({
   name: 'VueTimespinner',
+  props: {
+    'startTime': String,
+    'interval': String,
+  },
   data() {
     return {
-      time: dayjs('18:00', 'HH:mm'),
+      time: dayjs(this.startTime || '18:00', 'HH:mm'),
       options: {
-          interval: 15
+          interval: this.interval || 15
       },
     };
   },
   computed: {
-    computedTime() {
+    formattedTime() {
       return this.time.format('HH:mm')
     },
   },
@@ -34,7 +38,7 @@ export default /*#__PURE__*/defineComponent({
 <template>
   <div class="vue-timespinner">
     <button v-on:click="decrement">-</button>
-    <input type="text" v-bind:value="computedTime" />
+    <input type="text" v-bind:value="formattedTime" />
     <button v-on:click="increment">+</button>
   </div>
 </template>

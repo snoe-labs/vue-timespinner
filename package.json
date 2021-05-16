@@ -1,7 +1,12 @@
 {
   "name": "vue-timespinner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple Vue.js timespinner component",
+  "keywords": ["vue", "vuejs", "timespinner"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snoe-labs/vue-timespinner.git"
+  },
   "main": "dist/vue-timespinner.ssr.js",
   "browser": "dist/vue-timespinner.esm.js",
   "module": "dist/vue-timespinner.esm.js",

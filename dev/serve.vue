@@ -12,6 +12,6 @@ export default defineComponent({
 
 <template>
   <div id="app">
-    <vue-timespinner />
+    <vue-timespinner interval="15" startTime="16:15" />
   </div>
 </template>
